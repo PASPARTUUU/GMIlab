@@ -30,8 +30,8 @@ namespace Test
         {
             x2 = e.X;
             y2 = e.Y;
-            image = DrawwLine(image, x1, y1, x2, y2, Color.Black);
-            //image = new Bitmap(DrawwLine(image, x1, y1, x2,y2, Color.Black));
+            //image = DrawwLine(image, x1, y1, x2, y2, Color.Black);
+            image = new Bitmap(DDA(image, x1, y1, x2, y2, Color.Black));
             panel1.BackgroundImage = image;
         }
 
@@ -45,6 +45,51 @@ namespace Test
             //Bitmap image = new Bitmap(panel1.BackgroundImage);
             //Bitmap newImage = MyPaint(image, xo, yo, Color.Green, Color.Black);
             //panel1.BackgroundImage = newImage;
+        }
+        private Bitmap DDA(Bitmap img, float x1, float y1, float x2, float y2, Color color)
+        {
+            // Целочисленные значения координат начала и конца отрезка,
+            // округленные до ближайшего целого
+            int iX1 = (int)Math.Round(x1);
+            int iY1 = (int)Math.Round(y1);
+            int iX2 = (int)Math.Round(x2);
+            int iY2 = (int)Math.Round(y2);
+
+            // Длина и высота линии
+            int deltaX = Math.Abs(iX1 - iX2);
+            int deltaY = Math.Abs(iY1 - iY2);
+
+            // Считаем минимальное количество итераций, необходимое
+            // для отрисовки отрезка. Выбирая максимум из длины и высоты
+            // линии, обеспечиваем связность линии
+            int length = Math.Max(deltaX, deltaY);
+
+            // особый случай, на экране закрашивается ровно один пиксел
+            if (length == 0)
+            {
+                img.SetPixel(iX1, iY1, color);
+                return img;
+            }
+
+            // Вычисляем приращения на каждом шаге по осям абсцисс и ординат
+            double dX = (x2 - x1) / length;
+            double dY = (y2 - y1) / length;
+
+            // Начальные значения
+            double x = x1;
+            double y = y1;
+
+            // Основной цикл
+            length++;
+            while (length!=0)
+            {
+                length--;
+                x += dX;
+                y += dY;
+                img.SetPixel((int)Math.Round(x),(int)Math.Round(y), color);
+            }
+
+            return img;
         }
 
         private Bitmap DrawwLine(Bitmap img, int x1, int y1, int x2, int y2, Color color)
@@ -107,7 +152,6 @@ namespace Test
 
             return img;
         }
-
 
         private Bitmap BresenhamCircle(Bitmap img, int x0, int y0, int radius, Color color)
         {

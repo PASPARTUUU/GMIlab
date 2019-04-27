@@ -1,0 +1,7 @@
+System.Drawing.Bitmap b = new  System.Drawing.Bitmap(100,100);
+Pen blackPen = new Pen(Color.Black, 3);
+using (var graphics = Graphics.FromImage(bmp))
+{
+   graphics.DrawLine(blackPen, x1, y1, x2, y2);
+}
+PictureBox1.Image = b;

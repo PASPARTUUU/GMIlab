@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestPoligon.Properties
+namespace Test.Properties
 {
 
 

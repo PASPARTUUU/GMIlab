@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("TestPoligon")]
+[assembly: AssemblyTitle("Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("TestPoligon")]
+[assembly: AssemblyProduct("Test")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("754ffafd-d5fd-40c1-967a-e729f9eae069")]
+[assembly: Guid("01c6cea3-a29e-4f91-b248-2f34af836ac6")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

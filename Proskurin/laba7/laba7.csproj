@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{754FFAFD-D5FD-40C1-967A-E729F9EAE069}</ProjectGuid>
+    <ProjectGuid>{D4B2E973-E7F5-402D-B35A-3C1EE34C5163}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TestPoligon</RootNamespace>
-    <AssemblyName>TestPoligon</AssemblyName>
+    <RootNamespace>laba7</RootNamespace>
+    <AssemblyName>laba7</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -76,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Manual.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

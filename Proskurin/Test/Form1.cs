@@ -17,20 +17,52 @@ namespace Test
             InitializeComponent();
         }
 
-        int xo;
-        int yo;
+        int x1, x2, y1, y2;
+        Bitmap image;
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            x1 = e.X;
+            y1 = e.Y;
+        }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            xo = e.X;
-            yo = e.Y;
+            x2 = e.X;
+            y2 = e.Y;
+            
+            image = new Bitmap(DrawLine(image, x1, y1, x2, y2, Color.Black));
+            panel1.BackgroundImage = image;
+        }
+
+       
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           // image = new Bitmap(panel1.Size.Width, panel1.Size.Height);
+        }
+
+        private Bitmap DrawLine(Bitmap bitmap, int x0, int y0, int x1, int y1, Color color)
+        {
+            int dx = Math.Abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
+            int dy = Math.Abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
+            int err = (dx > dy ? dx : -dy) / 2, e2;
+            for (;;)
+            {
+                bitmap.SetPixel(x0, y0, color);
+                if (x0 == x1 && y0 == y1) break;
+                e2 = err;
+                if (e2 > -dx) { err -= dy; x0 += sx; }
+                if (e2 < dy) { err += dx; y0 += sy; }
+            }
+            return bitmap;
         }
 
         private void panel1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Bitmap image = new Bitmap(panel1.BackgroundImage);
-            Bitmap newImage = MyPaint(image, xo, yo, Color.Green, Color.Black);
-            panel1.BackgroundImage = newImage;
+            //Bitmap image = new Bitmap(panel1.BackgroundImage);
+            //Bitmap newImage = MyPaint(image, xo, yo, Color.Green, Color.Black);
+            //panel1.BackgroundImage = newImage;
         }
 
         private Bitmap MyPaint(Bitmap sourceImage, int xx, int yy, Color fill, Color borderColor)
@@ -52,7 +84,7 @@ namespace Test
                 int fl = 0;
 
                 image.SetPixel(x, y, fill);
-                
+
 
                 // заполняем интервал слева от затравки
                 x = x - 1;
